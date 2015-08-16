@@ -1,1 +1,13 @@
-Test README
+### Elephant OS
+
+Elephant OS is a TUI operating system based on the Cosmos C# wrapper. It's a working example of what can be done with Cosmos to create a basic operating system very quickly. 
+In its current stage, EOS is only practical for testing. It is confirmed working in VMWare, but we have not tested it on real hardware. Please let us know if you can accomplish this!
+
+
+Warning
+---------
+This OS was built during a 12 hour hackathon where the entire build team was extremely tired. Some of the code may be horribly constructed, and some of the variables/content may be slightly NSFW.
+
+How to compile
+---------
+Elephant OS can be compiled using the Cosmos public userkit and Visual Studio 2013. No .iso download is currently available.
