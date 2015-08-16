@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using Sys = Cosmos.System;
 
+
 namespace CosmosKernel1
 {
     public class Kernel : Sys.Kernel
     {
         public static bool hasRun = false;
+        public static string username = "";
+
         public string getArgs(string str, int index)
         {
-            
-            return  str.Split(' ')[index];
+
+            return str.Split(' ')[index];
 
 
         }
@@ -19,7 +22,7 @@ namespace CosmosKernel1
         public int getIntArgs(string str, int index)
         {
 
-            return Int32.Parse( str.Split(' ')[index]);
+            return Int32.Parse(str.Split(' ')[index]);
 
 
         }
@@ -53,8 +56,9 @@ namespace CosmosKernel1
 
         protected override void Run()
         {
-            var username = "";
-            if (!hasRun) {
+
+            if (!hasRun)
+            {
                 Console.Write("Username: ");
                 username = Console.ReadLine();
                 hasRun = true;
@@ -68,42 +72,50 @@ namespace CosmosKernel1
 
             if (getArgs(input, 0) == "test") //new command
             {
-                Console.WriteLine("tset");
+                Console.WriteLine("peen");
 
             }
-            else if (getArgs(input,0) == "echo")
+            else if (getArgs(input, 0) == "echo")
             {
                 Console.WriteLine(getArgs(input, 1));
             }
-            else if (getArgs(input,0) == "calc"){
+            else if (getArgs(input, 0) == "calc")
+            {
                 int num1 = getIntArgs(input, 1);
                 int num2 = getIntArgs(input, 3);
                 string op = getArgs(input, 2);
-
-                if (op == "+")
+                if (getArgs(input, 1) == "help")
                 {
-                    Console.WriteLine(num1 + num2);
-                }
-                else if (op == "-")
-                {
-                    Console.WriteLine(num1 - num2);
-                }
-                else if (op == "*")
-                {
-                    Console.WriteLine(num1 * num2);
-                }
-                else if (op == "/")
-                {
-                    Console.WriteLine(num1 / num2);
+                    Console.WriteLine("operators: + | - | * | / |");
                 }
                 else
                 {
-                    Console.WriteLine("Put spaces between your operands. (calc 1 + 1)");
+
+                    if (op == "+")
+                    {
+                        Console.WriteLine(num1 + num2);
+                    }
+                    else if (op == "-")
+                    {
+                        Console.WriteLine(num1 - num2);
+                    }
+                    else if (op == "*")
+                    {
+                        Console.WriteLine(num1 * num2);
+                    }
+                    else if (op == "/")
+                    {
+                        Console.WriteLine(num1 / num2);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Put spaces between your operands. (calc 1 + 1)");
+                    }
                 }
-           }
-            
-                
-            
+            }
+
+
+
             else if (input == "help")
             {
                 Console.WriteLine("===========================[Help Pages]===========================");
@@ -113,15 +125,15 @@ namespace CosmosKernel1
                 Console.WriteLine("|              Written in C# using Cosmos framework              |");
                 Console.WriteLine("|                                                                |");
                 Console.WriteLine("|test - Simple I/O test                                          |");
-                Console.WriteLine("|echo - Echoes given text back. Working example of passing       |");
-                Console.WriteLine("|arguments to a method, hard af to implement.                    |");
+                Console.WriteLine("|echo <text> - Echoes given text back. Working example of passing|");
+                Console.WriteLine("|arguments to a method.                                          |");
                 Console.WriteLine("|help - Displays this screen                                     |");
                 Console.WriteLine("|halt - Shut down Elephant OS                                    |");
                 Console.WriteLine("|version - Version and license information                       |");
-                Console.WriteLine("|calc - Simple calculator. Syntax example: (calc 1 + 1)          |");
-                Console.WriteLine("|                                                                |");
-                Console.WriteLine("|                                                                |");
-                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|calc - Simple calculator. Syntax example: (calc 1 + 1) Type calc|");
+                Console.WriteLine("|help for more info                                              |");
+                Console.WriteLine("|trunk - EXTREMELY basic text editor                             |");
+                Console.WriteLine("|clear- Clear the console                                        |");
                 Console.WriteLine("|                                                                |");
                 Console.WriteLine("|                                                                |");
                 Console.WriteLine("|                                                                |");
@@ -147,14 +159,72 @@ namespace CosmosKernel1
                 Console.WriteLine("This operating system is open source and free to use and modify.");
 
 
-            }else if (input == "ie"){
+            }
+            else if (input == "ie")
+            {
                 Console.WriteLine("EW Internet Explorer");
                 Console.WriteLine("Even an operating system this terrible knows not to use IE.");
-            }else{
+
+            }
+            else if (getArgs(input, 0) == "trunk")
+            {
+                Console.WriteLine("=============================[Trunk]==============================");
+                Console.WriteLine("|" + getArgs(input, 1) + "                                       |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|                                                                |");
+                Console.WriteLine("|================================================================|");
+
+            }
+            else if (input == "clear")
+            {
+
+                Console.Clear();
+
+            }
+            else if (input == "ejokes")
+            {
+                int k = 0;
+                if (k > 3)
+                {
+                    k = 0;
+                }
+                string[] jokes = { "Why do elephants wear shoes with yellow soles? So you don't see them when they float upside down in a bowl of mustard.", "What game do four elephants in a car play? Squash.", "Why are elephants wrinkled? t llWell have you ever tried to iron one?" };
+
+                Console.WriteLine(jokes[k]);
+                k++;
+
+            }
+            else if (input == "github")
+            {
+                Console.WriteLine("github.com/stevethedude/elephantOS");
+
+            }
+            else
+            {
                 Console.WriteLine("Unknown command. Type help for help.");
             }
 
         }
 
-      }
     }
+
+}
